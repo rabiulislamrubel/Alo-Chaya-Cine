@@ -13,7 +13,6 @@ const movieReducer = (state, action) => {
         }
 
         case 'Remove_Cart_Data':{
-            console.log(action.payload)
             return {
                 ...state,
                 cartData: [...action.payload],

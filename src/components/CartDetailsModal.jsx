@@ -3,6 +3,7 @@ import deleteImg from "../assets/delete.svg";
 import { useContext } from "react";
 import { MovieContext } from "../context";
 import { getImgURL } from "../utilities/ImageURL";
+import { toast } from "react-toastify";
 
 export default function CartDetailsModal({ onClosed }) {
   const { state, dispatch } = useContext(MovieContext);
@@ -12,6 +13,10 @@ export default function CartDetailsModal({ onClosed }) {
     dispatch({
       type: 'Remove_Cart_Data',
       payload: filteredMovie,
+    })
+
+    toast.success(`The ${movie.title} is removed from cart.`,{
+      position: 'bottom-right',
     })
   }
 
