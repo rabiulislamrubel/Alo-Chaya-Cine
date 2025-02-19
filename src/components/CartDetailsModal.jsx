@@ -1,24 +1,24 @@
-import checkout from "../assets/icons/checkout.svg";
-import deleteImg from "../assets/delete.svg";
 import { useContext } from "react";
+import { toast } from "react-toastify";
+import deleteImg from "../assets/delete.svg";
+import checkout from "../assets/icons/checkout.svg";
 import { MovieContext } from "../context";
 import { getImgURL } from "../utilities/ImageURL";
-import { toast } from "react-toastify";
 
 export default function CartDetailsModal({ onClosed }) {
   const { state, dispatch } = useContext(MovieContext);
 
   const handleRemoveCartData = (movie) => {
-    const filteredMovie = state.cartData.filter(item => item.id !== movie.id);
+    const filteredMovie = state.cartData.filter((item) => item.id !== movie.id);
     dispatch({
-      type: 'Remove_Cart_Data',
+      type: "Remove_Cart_Data",
       payload: filteredMovie,
-    })
+    });
 
-    toast.success(`The ${movie.title} is removed from cart.`,{
-      position: 'bottom-right',
-    })
-  }
+    toast.success(`The ${movie.title} is removed from cart.`, {
+      position: "bottom-right",
+    });
+  };
 
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
@@ -39,7 +39,9 @@ export default function CartDetailsModal({ onClosed }) {
                     alt="movie cover"
                   />
                   <div>
-                    <h3 className="text-base md:text-xl font-bold">{movie.title}</h3>
+                    <h3 className="text-base md:text-xl font-bold">
+                      {movie.title}
+                    </h3>
                     <p className="max-md:text-xs text-[#575A6E]">
                       {movie.genre}
                     </p>
@@ -47,7 +49,10 @@ export default function CartDetailsModal({ onClosed }) {
                   </div>
                 </div>
                 <div className="flex justify-between gap-4 items-center">
-                  <button onClick={() => handleRemoveCartData(movie)} className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white">
+                  <button
+                    onClick={() => handleRemoveCartData(movie)}
+                    className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
+                  >
                     <img
                       className="w-5 h-5"
                       src={deleteImg}
@@ -60,20 +65,16 @@ export default function CartDetailsModal({ onClosed }) {
             ))}
           </div>
           <div className="flex items-center justify-end gap-2">
-            <a
-              className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm"
-              href="#"
-            >
+            <button className="rounded-md p-2 md:px-4 inline-flex items-center space-x-2 bg-primary text-[#171923] text-sm">
               <img src={checkout} width="24" height="24" alt="checkout icon" />
               <span>Checkout</span>
-            </a>
-            <a
+            </button>
+            <button
               className="border border-[#74766F] rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#6F6F6F] dark:text-gray-200 font-semibold text-sm"
-              href="#"
               onClick={onClosed}
             >
               Cancel
-            </a>
+            </button>
           </div>
         </div>
       </div>
