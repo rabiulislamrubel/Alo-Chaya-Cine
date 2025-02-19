@@ -7,11 +7,17 @@ export default function WatchLater() {
 
   return (
     <div className="content">
-      <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
-        {watchLater.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      {watchLater.length > 0 ? (
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
+          {watchLater.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-full">
+          <p className="text-2xl">No Watch later are selected here.</p>
+        </div>
+      )}
     </div>
   );
 }
