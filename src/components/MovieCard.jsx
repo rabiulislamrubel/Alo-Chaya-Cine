@@ -53,7 +53,7 @@ export default function MovieCard({ movie }) {
         />
       )}
 
-      <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
+      <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl cursor-pointer">
         <div className="w-full" onClick={() => handleMovieSelect(movie)}>
           <img
             className="w-full h-80 object-contain"

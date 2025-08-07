@@ -38,7 +38,7 @@ export default function Header() {
           </li>
           <li>
             <a
-              className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
+              className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block cursor-pointer"
               onClick={handleThemeChange}
             >
               <img
